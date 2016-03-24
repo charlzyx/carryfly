@@ -1,10 +1,4 @@
-(function start(){
-	new Vue({
-		el:'#app',
-		data:{
-			school:'淮海工学院',
-			build:'D6',
-			room:'207'
-		}
-	});
-})();
+var home = document.getElementById('home');
+home.ontouchstart = function(){
+    window.location = "./html/home.html";
+}
