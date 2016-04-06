@@ -1,0 +1,24 @@
+{
+  "name": "carryfly",
+  "version": "0.1.0",
+  "description": "a simple express system base on friends",
+  "main": "bin/www",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ifelsee/carryfly.git"
+  },
+  "keywords": [
+    "carryfly",
+    "express",
+    "wechat"
+  ],
+  "author": "Xiaochao.Yang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ifelsee/carryfly/issues"
+  },
+  "homepage": "https://github.com/ifelsee/carryfly#readme"
+}
