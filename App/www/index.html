@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <link rel="stylesheet" type="text/css" href="./lib/material.min.css">
+    <link rel="stylesheet" type="text/css" href="./lib/icon.css">
+    <title>Welcome To CarryFly</title>
+    <style>
+        .mdl-card{
+            width: 100%;
+        }
+        .mdl-card__title{
+            background: url(./img/welcome_card.jpg);
+            color: #fff;
+            height: 176px;
+        }
+        #start{
+            display: block;
+            font-size: 28px;
+            line-height: 1.5;
+            height: 1.5em;
+            width: 90%;
+            margin: 50px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="welcomeWrap">
+
+        <div class="demo-card-wide mdl-card">
+          <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">很高兴见到你</h2>
+          </div>
+          <div class="mdl-card__supporting-text">
+            人是铁做的,宿舍是磁铁做的!<br/>
+            去快递但又不想出门?想吃饭但在宿舍?像买零食又不想去超市?
+          </div>
+        </div>
+        <button id="start" class="mdl-button mdl-button--raised mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+          带你飞!
+        </button>
+    </div>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="./lib/material.min.js"></script>
+    <script type="text/javascript" src="./js/index.js"></script>
+
+</body>
+
+</html>
