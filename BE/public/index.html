@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>GO DIE WX</title>
+
+</head>
+<body>
+	<h1>Hello World!</h1>
+	<button id="btn"><h1>choose and upload img</h1></button>
+	<button id="show"><h1>show images</h1></button>
+	<button id="send"><h1>send imgs</h1></button>
+	<script src="/lib/jquery-2.2.3.min.js"></script>
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script>
+		$.ajax({
+			url:'/apis/getwxaccess',
+			type:'GET',
+			data: window.location.href,
+			success:function(wxcfg){
+				// console.log(wxcfg);
+				wx.config({
+				    debug: true, //
+				    appId: 'wxade0b81767937053', // 
+				    timestamp: wxcfg.timestamp, // 
+				    nonceStr: wxcfg.noncestr, // 
+				    signature: wxcfg.signature,// 
+				    jsApiList: [
+					    'checkJsApi',
+					    'onMenuShareTimeline',
+					    'onMenuShareAppMessage',
+					    'onMenuShareQQ',
+					    'onMenuShareWeibo',
+					    'uploadImage',
+					    'chooseImage',
+					    'previewImage',
+					    'downloadImage'
+				    ] // 
+				});
+			},
+			error:function(err){
+				console.log(err);
+			}
+		})
+		
+
+
+
+
+	</script>
+	<script>
+	var mediaIds = {
+		ids : []
+	};
+	// function syncUpload(localIds){
+	// 	var localId = localids.pop();
+	// 	alert('iii'); 
+	// 	wx.uploadImage({
+	// 	    localId: localId, // 
+	// 	    isShowProgressTips: 1, // 
+	// 	    success: function (_res) {
+	// 	    	alert('hahahah');
+	// 	        mediaIds.ids.push(_res.serverId); // 
+	// 	        if(localIds.length > 0){
+	// 	        	arguments.callee(localIds);
+	// 	        }else{
+	// 	        	$.ajax({
+	// 	        		url:'/apis/wxuploads',
+	// 	        		type:'POST',
+	// 	        		data : mediaIds,
+	// 	        		success :function(){
+	// 	        			alert('++++');
+	// 	        		},
+	// 	        		error:function(err){
+	// 	        			alert('------------')
+	// 	        		}
+	// 	        	});
+	// 	        }
+	// 	    }
+	// 	});
+	// }
+	wx.ready(function(){
+	alert('Hello WeChat!');
+	
+	});
+var send = document.getElementById('send');
+
+send.onclick = function(){
+}
+var btn = document.getElementById('btn');
+	btn.onclick = function(){
+		wx.chooseImage({
+		    count: 4, // 
+		    sizeType: ['original', 'compressed'], // 
+		    sourceType: ['album', 'camera'], // 
+		    success: function (res) {
+		        var localIds = res.localIds; //
+		        syncUpload(localIds);
+		        // alert('localIds:',localIds);
+		        // syncUpload(res.localIds);
+		    }
+		});
+	};
+
+	var syncUpload = function(localIds,upIds){
+		alert(["upIds-----",upIds]);
+	    var localId = localIds.pop();
+	    upIds = upIds ? upIds : [];
+	    upIds.push(localId);
+	    wx.uploadImage({
+	        localId: localId,
+	        isShowProgressTips: 1,
+	        success: function (res) {
+	            var serverId = res.serverId; // 返回图片的服务器端ID
+	            //其他对serverId做处理的代码
+	            if(localIds.length > 0){
+	                syncUpload(localIds,upIds)	;
+	            }else{
+	            	alert(["upIds======",upIds])
+	            	$.ajax({
+	            		url: 'apis/wxuploads',
+	            		type: "POST",
+	            		data: {"idarr":upIds},
+	            		success: function(msg){
+	            			alert(msg);
+	            			// alert('success');
+	            		}
+	            	});
+	            }
+	        }
+	    });
+	};
+	</script>
+</body>
+</html>

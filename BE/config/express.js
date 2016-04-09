@@ -1,5 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var wechat = require('wechat');
 
 module.exports = function() {
     console.log('express init ......');
@@ -7,10 +8,18 @@ module.exports = function() {
     var app = express();
 
     app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({"extended":false}));
+    app.use(express.static('./public'));
+
+
     require('../app/routes/news.server.routes.js')(app);
+    require('../app/routes/wechat.server.route.js')(app);
+    require('../app/routes/apis.server.route.js')(app);
+
+
     app.use(function(req, res, next) {
         res.status(404);
-
+        
         try {
             return res.json('Not Found');
         } catch (e) {

@@ -24,6 +24,9 @@
   "dependencies": {
     "body-parser": "^1.15.0",
     "express": "^4.13.4",
-    "mongoose": "^4.4.11"
+    "jssha": "^2.0.2",
+    "mongoose": "^4.4.11",
+    "request": "^2.70.0",
+    "wechat": "^2.0.3"
   }
 }
