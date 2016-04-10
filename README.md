@@ -1,9 +1,9 @@
-##淮工带飞平台`CarryFly For HHITer`
+##淮工带飞平台`[CarryFly For HHITer]`
 
 Todo:
-- [ ]将图片从微信服务器转到本地服务器 `权限不足?`
-- [ ]`js-sdk`多媒体下载接口,同一个 `access_token`
-- [ ]缓存微信 `access_token`
+- [ ] 将图片从微信服务器转到本地服务器 `权限不足?`
+- [ ] `js-sdk`多媒体下载接口,同一个 `access_token`
+- [ ] 缓存微信 `access_token`
 
 2016/4/10
 ---
@@ -31,7 +31,7 @@ res.sendFile('/public/views/index.html',{root:"./"});
 ```
 2016/4/11
 ---
-微信JS-SDK图片上传 `jssdk`,`微信`
+- 微信JS-SDK图片上传 `jssdk`,`微信`
 ```javascript
 //选择可以多张,上传只能一张,微信是不是脑残....
 wx.chooseImage({
@@ -71,7 +71,7 @@ var syncUpload = function(localIds,upIds){
     });
 };
 ```
-后台处理,body-parser处理
+- 后台处理,body-parser处理
 ```javascript
 app.post('/apis/wxuploads',function(req,res){
 	console.log("body:",req.body);
@@ -79,7 +79,7 @@ app.post('/apis/wxuploads',function(req,res){
 	res.end('ok');
 });
 ```
-`tips`: 注意idarr后面方括号`[]`
+-`tips`: 注意idarr后面方括号`[]`
 ```js
 body: { 'idarr[]': [ 'weixin://resourceid/ed1793475a0a79bb063d755239c3a548','weixin://resourceid/082ab0abb05553829f4682ce08edb30b' ] }     
 idarr[]: [ 'weixin://resourceid/ed1793475a0a79bb063d755239c3a548','weixin://resourceid/082ab0abb05553829f4682ce08edb30b' ]
