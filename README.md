@@ -1,14 +1,14 @@
 ##淮工带飞平台`CarryFly For HHITer`
 
 Todo:
-[]将图片从微信服务器转到本地服务器 `权限不足?`
-[]`js-sdk`多媒体下载接口,同一个 `access_token`
-[]缓存微信 `access_token`
+- [ ]将图片从微信服务器转到本地服务器 `权限不足?`
+- [ ]`js-sdk`多媒体下载接口,同一个 `access_token`
+- [ ]缓存微信 `access_token`
 
 2016/4/10
 ---
 - `/apis/weixin.js`提取微信验证模块
-  `/config/env/development.js`中添加 hsot,微信appid,微信srcetc
+- `/config/env/development.js`中添加 hsot,微信appid,微信srcetc
 
 - 学习swig(1)
 swig配置
@@ -75,21 +75,18 @@ var syncUpload = function(localIds,upIds){
 ```javascript
 app.post('/apis/wxuploads',function(req,res){
 	console.log("body:",req.body);
-	console.log('arr[]:',req.body["idarr[]"]);
+	console.log('idarr[]:',req.body["idarr[]"]);
 	res.end('ok');
 });
 ```
-tips: `注意idarr后面方括号"[]"`
+`tips`: 注意idarr后面方括号`[]`
 ```js
-body: { 'idarr[]': 
-   [ 'weixin://resourceid/ed1793475a0a79bb063d755239c3a548',
-     'weixin://resourceid/082ab0abb05553829f4682ce08edb30b' ] }
-     arr[]: [ 'weixin://resourceid/ed1793475a0a79bb063d755239c3a548',
-       'weixin://resourceid/082ab0abb05553829f4682ce08edb30b' ]
+body: { 'idarr[]': [ 'weixin://resourceid/ed1793475a0a79bb063d755239c3a548','weixin://resourceid/082ab0abb05553829f4682ce08edb30b' ] }     
+idarr[]: [ 'weixin://resourceid/ed1793475a0a79bb063d755239c3a548','weixin://resourceid/082ab0abb05553829f4682ce08edb30b' ]
 ```
 
 #相关技术
- - Node.js 
- - Express
- - 微信JS-SDK
- - swig
+ - [Node.js](https://nodejs.org/en/docs/) 
+ - [Express](http://expressjs.com/)
+ - [微信JS-SDK](https://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html)
+ - [swig](http://paularmstrong.github.io/swig/)
