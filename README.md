@@ -29,7 +29,7 @@ res.sendFile('index.html', { root: __dirname });
 //应用
 res.sendFile('/public/views/index.html',{root:"./"});
 ```
-2016/4/11
+2016/4/9
 ---
 - 微信JS-SDK图片上传 `jssdk`,`微信`
 ```javascript
