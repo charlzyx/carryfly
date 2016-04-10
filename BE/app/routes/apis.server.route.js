@@ -1,18 +1,30 @@
-var wxAccess = require('../controllers/wechat.server.access_token.js')
-
+var weixin = require('../../apis/weixin.js');
+var request = require('request');
 
 module.exports = function(app){
-	app.get('/apis/getwxaccess',function(req,res){
-		wxAccess.getAccess(req,res);
-	});
-
-
 	app.post('/apis/wxuploads',function(req,res){
 		console.log('------------');
 		console.log("body:",req.body);
 		console.log('arr:',req.body["idarr"]);
 		console.log('arr[]:',req.body["idarr[]"]);
-		res.end('ok');
+		var mediaIdArr = req.body["idarr[]"];
+		var access_token = req.body["curtoken"];
+		request.get('http://file.api.weixin.qq.com/cgi-bin/media/get?access_token=' +access_token+ '&media_id='+mediaIdArr,
+			function(err,res,body){
+				console.log('curtoken------:',access_token);
 
+				console.log('body------:',body);
+			});
+		// weixin.getAccessToken(function(access_token){
+		// 	request.get('http://file.api.weixin.qq.com/cgi-bin/media/get?access_token=' +access_token+ '&media_id='+mediaIdArr,
+		// 		function(err,res,body){
+		// 			console.log('body------:',body);
+
+		// 			console.log('body------:',body);
+		// 		});
+		// });
+		
+		res.end('ok');
 	});
+
 }

@@ -66,8 +66,8 @@
 	            	alert(["upIds======",upIds])
 	            	$.ajax({
 	            		url: 'apis/wxuploads',
-	            		type: "POST",
-	            		data: {"idarr":upIds},
+	            		type: "POST", 
+	            		data: {"idarr":upIds,"curtoken":'{{ wxcfg.access_token }}'},
 	            		success: function(msg){
 	            			alert(msg);
 	            			// alert('success');
