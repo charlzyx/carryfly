@@ -6,7 +6,7 @@ module.exports = {
 		var news = new News(req.body);
 		news.save(function(err){
 			if(err){return next(err);}
-			return res.json(news);			
+			return res.json(news);
 		});
 	},
 	list: function(req,res,next){

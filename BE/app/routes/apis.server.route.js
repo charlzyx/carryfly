@@ -12,7 +12,6 @@ module.exports = function(app){
 		request.get('http://file.api.weixin.qq.com/cgi-bin/media/get?access_token=' +access_token+ '&media_id='+mediaIdArr,
 			function(err,res,body){
 				console.log('curtoken------:',access_token);
-
 				console.log('body------:',body);
 			});
 		// weixin.getAccessToken(function(access_token){
