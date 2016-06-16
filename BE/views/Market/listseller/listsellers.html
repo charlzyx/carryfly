@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>顺带平台-查看商品列表</title>
+    <link rel="stylesheet" href="/lib/weui.min.css">
+    <link rel="stylesheet" href="/Market/listseller/listsellers.css">
+</head>
+
+<body>
+    <div class="sListWrap">
+        <h1 class="page_title">商家列表</h1>
+        <div class="bd">
+            <div class="weui_cells">
+                {% for seller in sellers %}
+                <div class="weui_cell" href="/wx/m/market/{{seller.id}}">
+                        <div class="weui_cell_bd weui_cell_primary">
+                            <p>{{seller.shopname}}</p>
+                        </div>
+                        <div class="weui_cell_ft">
+                            {{seller.intro}}
+                        </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <script src="/lib/jquery-2.2.3.min.js"></script>
+    <script src="/Market/listseller/listsellers.js"></script>
+</body>
+
+</html>

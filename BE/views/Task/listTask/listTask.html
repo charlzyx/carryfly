@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>顺带平台-查看任务列表</title>
+    <link rel="stylesheet" href="/lib/weui.min.css">
+    <link rel="stylesheet" href="/Task/listTask/listTask.css">
+</head>
+
+<body>
+<div class="tCreateWrap">
+    <div class="top">
+        <h1 class="page_title">「任务列表」</h1>
+        <p class="page_desc"></p>
+    </div>
+    <div class="bd">
+        <div class="weui_cells weui_cells_form">
+                {% for task in list %}
+                <div class="weui_panel">
+                <a class="weui_panel_bd" href="/wx/t/show/{{task._id.toString()}}">
+                    <div class="weui_media_box weui_media_text">
+                        <h4 class="weui_media_title">{{task.title}}</h4>
+                        <p class="weui_media_desc">{{task.intro}}</p>
+                        <ul class="weui_media_info">
+                            <li class="weui_media_info_meta {% if task.bid == user.id %}my{% endif %}">{{task.bid.name}}</li>
+                            <li class="weui_media_info_meta weui_media_info_meta_extra">{{task.baddr}}</li>
+                        </ul>
+                    </div>
+                </a>
+                </div>
+                {% endfor %}
+        </div>
+    </div>
+</div>
+    <script src="/lib/jquery-2.2.3.min.js"></script>
+    <script src="/Task/listTask/listTask.js"></script>
+</body>
+
+</html>

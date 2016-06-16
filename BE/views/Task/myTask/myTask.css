@@ -1,0 +1,35 @@
+.money {
+    color: #3cc51f;
+    font-size: 2rem;
+}
+.tabtitle{
+	font-weight: 600;
+}
+.weui_panel_hd:after{
+    border-bottom: none;
+}
+.weui_cells{
+    margin-top: 0;
+}
+.weui_panel_hd{
+    margin-top: 20px;        
+}
+.weui_panel_hd.primary{
+    background-color: #3cc51f;
+    color:#fff;
+}
+.weui_panel_hd.plain{
+    border-top:1px solid #5A5A5A;
+    border-bottom:1px solid #5A5A5A;
+}
+.weui_panel_hd.plainprimary{
+    border-top: 1px solid #3cc51f;
+    border-bottom: 1px solid #3cc51f;
+    color:#3cc51f;
+}
+.weui_cell_primary{
+    text-align: center;
+}
+.page_title{
+    margin: auto;
+}

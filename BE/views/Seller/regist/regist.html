@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>「顺带」-商户注册</title>
+    <link rel="stylesheet" href="/lib/weui.min.css">
+    <link rel="stylesheet" href="/Seller/regist/regist.css">
+</head>
+
+<body>
+    <div class="sRegistWrap">
+        <div class="hd">
+            <h1 class="page_title">「顺带」</h1>
+            <p class="page_desc">完善注册信息</p>
+        </div>
+        <div class="bd">
+            <div class="weui_cells weui_cells_form">
+                <div class="weui_cell ucell">
+                    <div class="weui_cell_hd">
+                        <label class="weui_label">用户名</label>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <input id="username" class="weui_input" type="text" placeholder="只能由英文数字下划线组成" />
+                    </div>
+                    <div class="weui_cell_ft">
+                        <i class="weui_icon_warn"></i>
+                    </div>
+                </div>
+                <div class="weui_cell ucell">
+                    <div class="weui_cell_hd">
+                        <label class="weui_label">密码</label>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <input id="pwd" class="weui_input" type="password" placeholder="只能由英文数字下划线组成" />
+                    </div>
+                    <div class="weui_cell_ft">
+                        <i class="weui_icon_warn"></i>
+                    </div>
+                </div>
+                <div class="weui_cell ucell">
+                    <div class="weui_cell_hd">
+                        <label class="weui_label">重复密码</label>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <input id="repwd" class="weui_input" type="password" placeholder="请重复上面密码" />
+                    </div>
+                    <div class="weui_cell_ft">
+                        <i class="weui_icon_warn"></i>
+                    </div>
+                </div>
+                <div class="weui_cell ucell">
+                    <div class="weui_cell_hd">
+                        <label class="weui_label">商店名称</label>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <input id="shopname" class="weui_input" type="text" placeholder="百年老字号" />
+                    </div>
+                    <div class="weui_cell_ft">
+                        <i class="weui_icon_warn"></i>
+                    </div>
+                </div>
+                <div class="weui_cell ucell">
+                    <div class="weui_cell_hd">
+                        <label class="weui_label">简介</label>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <input id="intro" class="weui_input" type="text" placeholder="一句话简介" />
+                    </div>
+                    <div class="weui_cell_ft">
+                        <i class="weui_icon_warn"></i>
+                    </div>
+                </div>
+                <div class="weui_cell ucell">
+                    <div class="weui_cell_hd">
+                        <label class="weui_label">联系电话</label>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <input id="phone" class="weui_input" type="text" placeholder="联系电话(请填写11位手机号码)" />
+                    </div>
+                    <div class="weui_cell_ft">
+                        <i class="weui_icon_warn"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="weui_btn_area">
+                <a class="weui_btn weui_btn_primary" href="javascript:" id="regist">注册</a>
+                <a class="weui_btn weui_btn_default" href="/s/login">已有账号?去登录</a>
+            </div>
+        </div>
+    </div>
+    <script src="/lib/jquery-2.2.3.min.js"></script>
+    <script src="/Seller/regist/regist.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>{{user.name}}{% if btasks %}发布{% else %}接受{% endif %}的任务列表</title>
+    <link rel="stylesheet" href="/lib/weui.min.css">
+    <link rel="stylesheet" href="/Task/myTask/myTask.css">
+</head>
+
+<body>
+    <div class="tMyWrap">
+        <div class="top">
+            <h1 class="page_title">「我{% if btasks %}发布{% else %}接受{% endif %}的任务」</h1>
+            <p class="page_desc">Tip:点击任务名称可以查看任务详情</p>
+        </div>
+        <div class="weui_panel ">
+            {% if btasks %} {# 2.完成待确认 #}
+            <div class="weui_panel_hd tabtitle primary">完成待确认</div>
+            <div class="weui_cells">
+                <div class="weui_cell">
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>任务名称</p>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>快递员</p>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>联系方式</p>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>操作</p>
+                    </div>
+                </div>
+                {% for task in btasks %} {% if task.state == 2%}
+                <div class="weui_cell">
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <a href="/wx/t/show/{{task._id.toString()}}">
+                            <p>{{task.title}}</p>
+                        </a>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>{{task.pid.name}}</p>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>{{task.pid.phone}}</p>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p data-tid="{{task._id.toString()}}" class="weui_btn weui_btn_primary yes">确认</p>
+                    </div>
+                </div>
+                {% endif %} {% endfor %}
+            </div>
+            {# 1.被领取未完成 #}
+            <div class="weui_panel_hd tabtitle plainprimary">被领取未完成</div>
+            <div class="weui_cells">
+                <div class="weui_cell">
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>任务名称</p>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>快递员</p>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>联系方式</p>
+                    </div>
+                </div>
+                {% for task in btasks %} {% if task.state == 1%}
+                <div class="weui_cell">
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <a href="/wx/t/show/{{task._id.toString()}}">
+                            <p>{{task.title}}</p>
+                        </a>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>{{task.pid.name}}</p>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>{{task.pid.phone}}</p>
+                    </div>
+                </div>
+                {% endif %} {% endfor %}
+            </div>
+            {# 0.未被领取 #}
+            <div class="weui_panel_hd tabtitle plain">未被领取</div>
+            <div class="weui_cells">
+                <div class="weui_cell">
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>任务名称</p>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>操作</p>
+                    </div>
+                </div>
+                {% for task in btasks %} {% if task.state == 0%}
+                <div class="weui_cell">
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <a href="/wx/t/show/{{task._id.toString()}}">
+                            <p>{{task.title}}</p>
+                        </a>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p data-tid="{{task._id.toString()}}" class="weui_btn weui_btn_warn del">撤销</p>
+                    </div>
+                </div>
+                {% endif %} {% endfor %}
+            </div>
+            {# 3.已完成 #}
+            <div class="weui_panel_hd tabtitle plain">已完成 </div>
+            <div class="weui_cells">
+                <div class="weui_cell">
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>任务名称</p>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>快递员</p>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>联系方式</p>
+                    </div>
+                </div>
+                {% for task in btasks %} {% if task.state == 3%}
+                <div class="weui_cell">
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <a href="/wx/t/show/{{task._id.toString()}}">
+                            <p>{{task.title}}</p>
+                        </a>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>{{task.pid.name}}</p>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>{{task.pid.phone}}</p>
+                    </div>
+                </div>
+                {% endif %} {% endfor %}
+            </div>
+            {% endif %}
+            <!-- -------------------------- -->
+            {% if ptasks %} {# 1.领取未完成 #}
+            <div class="weui_panel_hd tabtitle primary">领取未完成</div>
+            <div class="weui_cells">
+                <div class="weui_cell">
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>任务名称</p>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>货主</p>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>联系方式</p>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>操作</p>
+                    </div>
+                </div>
+                {% for task in ptasks %} {% if task.state == 1%}
+                <div class="weui_cell">
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <a href="/wx/t/show/{{task._id.toString()}}">
+                            <p>{{task.title}}</p>
+                        </a>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>{{task.bid.name}}</p>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>{{task.bid.phone}}</p>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p data-tid="{{task._id.toString()}}" class="weui_btn weui_btn_primary finish">完成</p>
+                    </div>
+                </div>
+                {% endif %} {% endfor %}
+            </div>
+            {# 2.完成待确认 #}
+            <div class="weui_panel_hd tabtitle plainprimary">完成待确认</div>
+            <div class="weui_cells">
+                <div class="weui_cell">
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>任务名称</p>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>货主</p>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>联系方式</p>
+                    </div>
+                </div>
+                {% for task in ptasks %} {% if task.state == 2%}
+                <div class="weui_cell">
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <a href="/wx/t/show/{{task._id.toString()}}">
+                            <p>{{task.title}}</p>
+                        </a>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>{{task.bid.name}}</p>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>{{task.bid.phone}}</p>
+                    </div>
+                </div>
+                {% endif %} {% endfor %}
+            </div>
+            {# 3.已完成 #}
+            <div class="weui_panel_hd tabtitle plain">已完成 </div>
+            <div class="weui_cells">
+                <div class="weui_cell">
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>任务名称</p>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>货主</p>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>联系方式</p>
+                    </div>
+                </div>
+                {% for task in ptasks %} {% if task.state == 3%}
+                <div class="weui_cell">
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <a href="/wx/t/show/{{task._id.toString()}}">
+                            <p>{{task.title}}</p>
+                        </a>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>{{task.bid.name}}</p>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p>{{task.bid.phone}}</p>
+                    </div>
+                </div>
+                {% endif %} {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <script src="/lib/jquery-2.2.3.min.js"></script>
+    <script src="/Task/myTask/myTask.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>顺带平台-查看商品列表</title>
+    <link rel="stylesheet" href="/lib/weui.min.css">
+    <link rel="stylesheet" href="/Goods/listgoods/listgoods.css">
+</head>
+
+<body>
+<div class="gListWrap">
+    <div class="hd">
+        <h1 class="page_title"><a href="/s/home">{{seller.shopname}}的商品</a></h1>
+        <p class="page_desc">Tip:下架状态的商品才能删除</p>
+    </div>
+    <div class="weui_cells_title">批量操作</div>
+    <div class="weui_cell weui_cell_switch">
+        <div class="weui_cell_hd weui_cell_primary">
+            <a href="javascript:;" id="downall" class="weui_btn weui_btn_primary">下架选中</a>
+        </div>
+        <div class="weui_cell_hd weui_cell_primary">
+            <a href="javascript:;" id="upall" class="weui_btn weui_btn_primary">上架选中</a>
+        </div>
+        <div class="weui_cell_hd weui_cell_primary">
+            <a href="javascript:;" id="delall" class="weui_btn weui_btn_warn">删除选中</a>
+        </div>
+    </div>
+
+    <div class="weui_cells_title">商品表</div>
+    <div class="weui_cells weui_cells_checkbox">
+        <label class="weui_cell weui_check_label" for="setall">
+            <div class="weui_cell_hd">
+                <input type="checkbox" class="weui_check" name="checkbox1" id="setall">
+                <i class="weui_icon_checked"></i>
+            </div>
+            <div class="weui_cell_hd weui_cell_primary">商品名称</div>
+            <div class="weui_cell_hd weui_cell_primary">当前状态</div>
+            <div class="weui_cell_hd weui_cell_primary">操作</div>
+        </label>
+        {%for goods in goodslist %}
+        <label class="weui_cell weui_check_label" for="{{goods._id.toString()}}">
+            <div class="weui_cell_hd">
+                <input type="checkbox" class="weui_check sub" name="checkbox1" id="{{goods._id.toString()}}">
+                <i class="weui_icon_checked"></i>
+            </div>
+            <div class="weui_cell_hd weui_cell_primary">{{goods.name}}</div>
+            <div class="weui_cell_hd weui_cell_primary">
+                <input class="weui_switch state" data-gid="{{goods._id.toString()}}" type="checkbox"  {% if goods.state %}checked {% endif %}>
+            </div>
+            <div class="weui_cell_hd weui_cell_primary">
+                <a href="/m/s/modifygoods/{{goods._id.toString()}}">
+                <div class="weui_cell_hd weui_cell_primary">编辑</div>
+                </a>
+            </div>
+        </label>
+        {% endfor %}
+    </div>
+</div>
+    <script src="/lib/jquery-2.2.3.min.js"></script>
+    <script src="/Goods/listgoods/listgoods.js"></script>
+</body>
+
+</html>

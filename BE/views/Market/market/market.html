@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>顺带平台-查看商品列表</title>
+    <link rel="stylesheet" href="/lib/weui.min.css">
+    <link rel="stylesheet" href="/Market/market/market.css">
+</head>
+
+<body>
+    <div class="mWrap">
+        <div class="hd">
+            <h1 class="page_title">{{seller.shopname}}</h1>
+            <p class="page_desc">{{seller.intro}}</p>
+        </div>
+        <div class="weui_grids">
+        {% for goods in list %}
+            <div class="weui_grid">
+                <p class="weui_grid_title">
+                    {{goods.name}}
+                </p>
+                <p class="weui_grid_intro">
+                    {{goods.intro}}
+                </p>
+                <p class="weui_grid_img" style="background-image: url({{goods.imgurl}});"></p>
+                <p class="weui_grid_price">
+                    价格:{{goods.price.toFixed(2)}}元
+                </p>
+                <p class="weui_btn weui_btn_primary addbtn" data-id="{{goods.id.toString()}}" 
+                    data-price="{{goods.price}}">
+                    加入购物车
+                </p>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+    <div class="weui_dialog_confirm hide" >
+        <div class="weui_mask"></div>
+        <div class="weui_dialog">
+            <div class="weui_dialog_hd">
+              <strong class="weui_dialog_title">购买数量</strong>
+            </div>
+            <div class="weui_dialog_bd">
+                    <div class="weui_cell">
+                        <div class="weui_cell_hd">
+                            <label class="weui_label">数量</label>
+                        </div>
+                        <div class="weui_cell_bd weui_cell_primary">
+                            <input class="weui_input" id="num" type="tel" value="1" placeholder="">
+                        </div>
+                    </div>
+            </div>
+            <div class="weui_dialog_ft">
+                <a href="javascript:;" id="cancel" class="weui_btn_dialog default">取消</a>
+                <a href="javascript:;" id="addcart" tmp-id="" tmp-price="" class="weui_btn_dialog primary">确定</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="tabbar">
+    <div class="weui_tab">
+        <div class="weui_tabbar">
+            <div class="weui_tabbar_item">
+                共计<span id="total">0.00</span>元
+            </div>
+            <div  id="submit" class="weui_tabbar_item weui_btn weui_btn_primary">
+                <span class="primary">创建订单</span>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script src="/lib/jquery-2.2.3.min.js"></script>
+    <script>
+    var sid = '{{seller._id.toString()}}';
+    var bid = '{{user._id.toString()}}';
+    </script>
+    <script src="/Market/market/market.js"></script>
+    
+</body>
+
+</html>

@@ -1,23 +1,35 @@
 var express = require('express');
+var session = require('express-session');
+var cookieParser = require('cookie-parser');
+var favicon = require('serve-favicon');
 var bodyParser = require('body-parser');
 var wechat = require('wechat');
 var swig = require('swig');
 
 module.exports = function() {
-    console.log('express init ......');
+    console.log('express init ...');
 
     var app = express();
     app.set('view engine', 'html');
     app.set('views','./views');
     app.use(express.static('./public'));
+    app.use(express.static('./views'));
+    app.use(favicon('./public/favicon.ico'));
+    app.use(cookieParser());
+
     app.engine('html',swig.renderFile);
     app.use(bodyParser.json());
-    app.use(bodyParser.urlencoded({"extended":false}));
+    app.use(bodyParser.urlencoded({"extended":true}));
 
-    require('../app/routes/swig.server.route.js')(app);
-    require('../app/routes/apis.server.route.js')(app);
-    // require('../app/routes/news.server.routes.js')(app);
-    require('../app/routes/wechat.server.route.js')(app);
+
+    app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 600000 }}));
+    require('../app/routes/wx.wechat.route.js')(app);
+    require('../app/routes/m.market.route.js')(app);
+    require('../app/routes/t.task.route.js')(app);
+    require('../app/routes/s.seller.routes.js')(app);
+    require('../app/routes/u.user.route.js')(app);
+
+    require('../apis/upload.js')(app);
 
 
     app.use(function(req, res, next) {

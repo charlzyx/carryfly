@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>{{seller.shopname}}的主页</title>
+    <link rel="stylesheet" href="/lib/weui.min.css">
+    <link rel="stylesheet" href="/Seller/home/home.css">
+</head>
+
+<body>
+    <div class="sHomeWrap">
+        <div class="hd">
+            <h1 class="page_title">{{seller.shopname}}</h1>
+            <p class="page_desc">{{seller.intro}}</p>
+        </div>
+        <div class="bd">
+            <div class="weui_grids">
+                <a href="/m/s/listgoods" class="weui_grid">
+                    <div class="weui_grid_icon">
+                        <img src="/imgs/icon/icon_nav_cell.png" height="56" width="56" alt="">
+                    </div>
+                    <p class="weui_grid_label">
+                        查看商品列表
+                    </p>
+                </a>
+                <a href="/m/s/addgoods" class="weui_grid">
+                    <div class="weui_grid_icon">
+                        <img src="/imgs/icon/icon_nav_tab.png" height="56" width="56" alt="">
+                    </div>
+                    <p class="weui_grid_label">
+                        上架商品
+                    </p>
+                </a>
+            </div>
+        </div>
+        {% if orders %}
+        <div class="weui_cells_title">售出订单</div>    
+        <div class="weui_cells weui_cells_form">
+            <div class="weui_panel">
+                <div class="weui_panel_hd">订单信息</div>
+                <div class="weui_panel_bd">
+                    <a href="javascript:void(0);" class="weui_media_box weui_media_appmsg">
+                        <div class="weui_media_bd">
+                            <h4 class="weui_media_title shopname">{{orders.sid.shopname}}</h4> {% for g in orders.gArr %}
+                            <p class="weui_media_desc">{{g.name}} <span class="num">¥{{g.price.toFixed(2)}}&nbsp;x&nbsp;{{orders.numInfo["'"+g._id.toString()+"'"]}}</span></p> {% endfor %}
+                        </div>
+                    </a>
+                </div>
+            <a class="weui_panel_ft" href="javascript:void(0);">共计: <span class="money">¥{{orders.total.toFixed(2)}}元</span></a> 
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    <script src="/lib/jquery-2.2.3.min.js"></script>
+    <script src="/Seller/home/home.js"></script>
+</body>
+
+</html>

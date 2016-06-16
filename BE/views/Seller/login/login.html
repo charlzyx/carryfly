@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>「顺带」--商户登录</title>
+    <link rel="stylesheet" href="/lib/weui.min.css">
+    <link rel="stylesheet" href="/Seller/login/login.css">
+</head>
+
+<body>
+    <div class="sLoginWrap">
+        <div class="hd">
+            <h1 class="page_title">「顺带」</h1>
+            <p class="page_desc">为真正会懒的人而生</p>
+        </div>
+        <div class="bd">
+            <div class="weui_cells weui_cells_form">
+                <div class="weui_cell ucell">
+                    <div class="weui_cell_hd">
+                        <label class="weui_label">用户名</label>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <input id="username" class="weui_input" type="text" placeholder="请输入用户名" />
+                    </div>
+                    <div class="weui_cell_ft">
+                        <i class="weui_icon_warn"></i>
+                    </div>
+                </div>
+                <div class="weui_cell pcell">
+                    <div class="weui_cell_hd">
+                        <label class="weui_label">密码</label>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <input id="pwd" class="weui_input" type="password" placeholder="请输入密码" />
+                    </div>
+                    <div class="weui_cell_ft">
+                        <i class="weui_icon_warn"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="weui_btn_area">
+                <a class="weui_btn weui_btn_primary" href="javascript:" id="login">登录</a>
+                <a class="weui_btn weui_btn_default" href="/s/regist">还没有账号?去注册</a>
+            </div>
+        </div>
+    </div>
+    <script src="/lib/jquery-2.2.3.min.js"></script>
+    <script src="/Seller/login/login.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,18 @@
+.money{
+	font-size: 1.2rem;
+	color: #3cc51f;
+	line-height: 1.4rem;
+	float: right;
+	padding-right: 32px;
+
+}
+.num{float: right;}
+
+.shopname{
+	color: #3cc51f;
+}
+
+.weui_panel_ft{
+	width: 100%;
+	display: inline-block;
+}

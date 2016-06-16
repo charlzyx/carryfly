@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>顺带平台-发起任务</title>
+    <link rel="stylesheet" href="/lib/weui.min.css">
+    <link rel="stylesheet" href="/Task/createTask/createTask.css">
+</head>
+
+<body>
+    <div class="tCreateWrap">
+        <div class="top">
+            <h1 class="page_title">「创建任务」</h1>
+            <p class="page_desc">完善任务信息</p>
+        </div>
+        <div class="bd">
+
+            {% if order %}
+            <div class="weui_cells weui_cells_form">
+                <div class="weui_panel">
+                    <div class="weui_panel_hd">订单信息</div>
+                    <div class="weui_panel_bd">
+                        <a href="javascript:void(0);" class="weui_media_box weui_media_appmsg">
+                            <div class="weui_media_bd">
+                                <h4 class="weui_media_title shopname">{{order.sid.shopname}}</h4> {% for g in order.gArr %}
+                                <p class="weui_media_desc">{{g.name}} <span class="num">¥{{g.price.toFixed(2)}}&nbsp;x&nbsp;{{order.numInfo["'"+g._id.toString()+"'"]}}</span></p> {% endfor %}
+                            </div>
+                        </a>
+                    </div>
+                <a class="weui_panel_ft" href="javascript:void(0);">共计: <span class="money">¥{{order.total.toFixed(2)}}元</span></a> 
+                </div>
+            </div>
+            {% endif %}
+            <div class="weui_cells">
+                <div class="weui_cells_title">任务信息</div>
+                <div class="weui_cell ucell">
+                    <div class="weui_cell_hd">
+                        <label class="weui_label">标题</label>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <input id="title" class="weui_input" type="text" placeholder="任务标题" />
+                    </div>
+                </div>
+                <div class="weui_cell ucell">
+                    <div class="weui_cell_hd">
+                        <label class="weui_label">收货地址</label>
+                    </div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <input id="taddr" class="weui_input" type="tel" placeholder="不填写则为宿舍地址" />
+                    </div>
+                </div>
+            </div>
+            <div class="weui_cells_title">简述</div>
+            <div class="weui_cells weui_cells_form">
+                <div class="weui_cell">
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <textarea id="intro" class="weui_textarea" placeholder="简单描述任务内容" rows="3"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="weui_btn_area">
+            <a class="weui_btn weui_btn_primary" href="javascript:" id="submit">发布</a>
+            <a class="weui_btn weui_btn_warn" href="/wx/m/listshop" id="cancel">取消</a>
+        </div>
+    </div>
+    <script src="/lib/jquery-2.2.3.min.js"></script>
+    <script>
+    var task = {
+        title: '',
+        intro: '',
+        {% if order %}
+        order: '{{order._id.toString()}}',
+        {% endif %}
+        bid: '{{user._id.toString()}}',
+        baddr: "{{user.addr}}",
+        state: 0
+    }
+    </script>
+    <script src="/Task/createTask/createTask.js"></script>
+</body>
+
+</html>
